@@ -88,6 +88,7 @@ enum TableViewEditingCommand {
     case AppendItem(item: IntItem, section: Int)
     case MoveItem(sourceIndex: IndexPath, destinationIndex: IndexPath)
     case DeleteItem(IndexPath)
+    case Expandable(IndexPath)
 }
 
 // This is the part
@@ -134,7 +135,12 @@ struct SectionedTableViewState {
                 
                 return SectionedTableViewState(sections: sections)
             }
+        case .Expandable(let index):
+            var sections = self.sections
+
+            return SectionedTableViewState(sections: sections)
         }
+
     }
 }
 
